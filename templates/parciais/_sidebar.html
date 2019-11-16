@@ -1,0 +1,87 @@
+{% load static %}
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+
+      <div class="logo">
+        <a href="{% url 'dashboard' %}" class="simple-text logo-normal">
+          BASTOS
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li
+           {% if '/accounts/dashboard/' == request.path %}
+              class="nav-item active"
+            {% else %}
+              class="nav-item"
+            {% endif %}
+          >
+             <a class="nav-link" href="{% url 'dashboard' %}">
+               <i class="material-icons">dashboard</i>
+               <p>Dashboard</p>
+             </a>
+          </li>
+
+          <li
+            {% if '/cliente/' == request.path %}
+                  class="nav-item active"
+                {% else %}
+                  class="nav-item"
+            {% endif %}
+          >
+             <a class="nav-link" href="{% url 'cliente' %}">
+               <i class="material-icons">person</i>
+               <p>Clientes</p>
+             </a>
+          </li>
+
+          <li
+            {% if '/servicos/' == request.path %}
+              class="nav-item active"
+            {% else %}
+              class="nav-item"
+            {% endif %}
+          >
+             <a class="nav-link" href="{% url 'servico' %}">
+               <i class="material-icons">build</i>
+               <p>Serviços</p>
+             </a>
+          </li>
+
+          <li
+           {% if '/financeiro/' == request.path %}
+              class="nav-item active"
+            {% else %}
+              class="nav-item"
+            {% endif %}
+          >
+             <a class="nav-link" href="#">
+               <i class="material-icons">payment</i>
+               <p>Financeiro</p>
+             </a>
+          </li>
+
+          <li
+           {% if '/estoque/' == request.path %}
+              class="nav-item active"
+            {% else %}
+              class="nav-item"
+            {% endif %}
+          >
+             <a class="nav-link" href="#">
+               <i class="material-icons">content_paste</i>
+               <p>Estoque</p>
+             </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons">location_ons</i>
+              <p>Maps</p>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>

@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Dados do Serviço</h4>
+                  <p class="card-category">Todas as informações do Serviço</p>
+                </div>
+                <div class="card-body">
+                  <form method="POST">
+                      {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-info">Cliente: </span>{{servico.nome}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info">R$</span> {{servico.preco}}</label>
+                         <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-group">
+                              <label class="bmd-label-floating"><span class="text-info"> Status: </span>
+                                {% if servico.status %}
+                               <span>Em Aberto</span>
+                                {%else%}
+                               <span>Finalizado</span>
+                                {%endif%}
+                              </label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-info"> Fabricante: </span>{{servico.fabricante}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-info"> Carro: </span>{{servico.carro}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-info"> Placa: </span>{{servico.placa}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Ano: </span>{{servico.ano}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Modelo: </span>{{servico.modelo}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info">Motor:</span> {{servico.motor}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Pintura: </span>{{servico.pintura}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Serviço: </span>{{servico.tipo}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Material: </span>{{servico.pecas}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="bmd-label-floating"><span class="text-info"> Descrição:</span> {{servico.descricao}}</label>
+                            <input type="text" class="form-control" disabled>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-info">Solução:</span> {{servico.solucao}}</label>
+                         <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      </div>
+
+                    <br>
+                    <a href="{% url 'servico' %}"> <button type="button" class="btn btn-info pull-right" >Voltar</button></a>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+
+                <div class="card-body">
+                  <h6 class="card-category text-gray">Histórico de Serviços</h6>
+                  <h4 class="card-title">{{servico.nome}}</h4>
+                  <br>
+                     <p class="card-description">
+                       <span class="text-info">Em Aberto:</span>
+                        {{servico.status}}
+                    </p>
+                  <p class="card-description">
+                    <span class="text-info">Finalizados:</span>
+                    {{servico.status}}
+                  </p>
+
+                  <a href="#" class="btn btn-info btn-round">Mais Informações</a>
+                </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load easy_mask %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Dados Cadastrais</h4>
+                  <p class="card-category">Todas as informações do Cliente</p>
+                </div>
+                <div class="card-body">
+                  <form method="POST">
+                      {% csrf_token %}
+                    <div class="row">
+
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Nome:</span> {{cliente.nome}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Telefone:</span> {{cliente.telefone | phone}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Celular: </span>{{cliente.celular | phone}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Email:</span> {{cliente.email}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Endereço:</span> {{cliente.endereco}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Cidade:</span> {{cliente.cidade}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Cpf:</span> {{cliente.cpf | cpf}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Cnpj:</span> {{cliente.cnpj | cnpj}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating"><span class="text-primary">Data de Cadastro:</span> {{cliente.data_criacao|date:'d/m/Y'}}</label>
+                         <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <a href="{% url 'cliente' %}"> <button type="button" class="btn btn-primary pull-right" >Voltar</button></a>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+
+                <div class="card-body">
+                  <h6 class="card-category text-gray">Histórico de Serviços</h6>
+                  <h4 class="card-title">{{cliente.nome}}</h4>
+                  <p class="card-description">
+                    colocar histórico
+                  </p>
+                  <a href="#" class="btn btn-primary btn-round">Mais Informações</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

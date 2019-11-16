@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                    <div class="card-profile">
+                        <div class="card-avatar pull-right">
+                            <img class="img" src="{% static '/img/faces/marc.jpg' %}" />
+                        </div>
+                    </div>
+                  <h4 class="card-title">Perfil de Usuário</h4>
+                  <p class="card-category">Informações do Usuário</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{user}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{user.email}}</label>
+                          <input type="email" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{user.first_name}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{user.last_name}}</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div>
+                    </div>
+                      <br>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

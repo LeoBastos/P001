@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content">
+
+          <div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Cadastro</strong>
+        </div>
+            <div class="card-body">
+                <form method="POST"  action="{% url 'cadastro' %}">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ form|crispy }}
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

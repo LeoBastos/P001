@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load easy_mask %}
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Clientes</h4>
+                  <p class="card-category">Todos Clientes Cadastrados</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-muted">
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Contato</th>
+                      <th>Email</th>
+                      <th>Editar</th>
+                    </thead>
+                    <tbody>
+                    {% for cliente in clientes %}
+                      <tr>
+                        <td>{{cliente.id}}</td>
+                        <td>
+                            <a href="{% url 'single' cliente.id %}">{{ cliente.nome }}
+                        </td>
+                        <td>{{ cliente.telefone | phone }} / {{ cliente.celular| phone }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td class="td-actions">
+                              <button type="button" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Edit Task">
+                                <a href="{% url 'edit' cliente.id %}"><i class="material-icons">edit</i></button>
+                        </td>
+                      </tr>
+                     {% endfor %}
+                      </tbody>
+
+                  </table>
+                    <hr>
+                      <a href="{% url 'cliente' %}"> <button type="button" class="btn btn-primary pull-right" >Voltar</button></a>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                {% for pagina in clientes.paginator.page_range  %}
+                                  {% if clientes.number == pagina %}
+                                <li class="page-item active">
+                                    <a class="page-link" href="?page={{ pagina }}">
+                                        {{ pagina }}
+                                    </a>
+                                </li>
+                                  {% else %}
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{ pagina }}">
+                                        {{ pagina }}
+                                    </a>
+                                </li>
+                                  {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load easy_mask %}
+{% block content %}
+<div class="content">
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <i class="material-icons pull-right">person</i>
+                    <h4 class="card-title">Cadastrar</h4>
+                    <p class="card-category">Incluir novos Clientes no Sistema</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                <button type="submit" class="btn btn-primary pull-left" data-toggle="modal" data-target="#inquiryModal">Cadastrar</button>
+                  </div>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <i class="material-icons pull-right">zoom_in</i>
+                    <h4 class="card-title">Visualizar</h4>
+                    <p class="card-category">Veja todos Clientes Cadastrados</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                <a href="{% url 'lista' %}"><button type="submit" class="btn btn-primary">Listar Clientes</button></a>
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- Inquiry Modal -->
+          <div class="modal fade" id="inquiryModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="inquiryModalLabel">Cadastrar</h5>
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form method="POST"  action="{% url 'cadastro' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="nome" class="col-form-label">Nome:</label>
+                      <input type="text" name="nome" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="endereco" class="col-form-label">Endereço:</label>
+                      <input type="text" name="endereco" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="cidade" class="col-form-label">Cidade:</label>
+                      <input type="text" name="cidade" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="email" class="col-form-label">Email:</label>
+                      <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="telefone" class="col-form-label">Telefone:</label>
+                      <input type="text" name="telefone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="celular" class="col-form-label">Celular:</label>
+                      <input type="text" name="celular" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="cpf" class="col-form-label">CPF:</label>
+                      <input type="text" name="cpf" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="CNPJ" class="col-form-label">CNPJ:</label>
+                      <input type="text" name="cnpj" class="form-control">
+                    </div>
+
+                    <hr>
+                    <input type="submit" value="cadastro" class="btn btn-block btn-primary">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Clientes</h4>
+                  <p class="card-category">Ultimos Clientes Cadastrados</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-muted">
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Contato</th>
+                      <th>Email</th>
+                      <th>Editar</th>
+                    </thead>
+                    <tbody>
+                    {% for cliente in clientes %}
+                      <tr>
+                        <td>{{cliente.id}}</td>
+                        <td>
+                          <a href="{% url 'single' cliente.id %}">{{ cliente.nome }}
+                        </td>
+                        <td>{{ cliente.telefone | phone }} / {{ cliente.celular | phone }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td class="td-actions">
+                              <button type="button" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Editar Cliente">
+                                <a href="{% url 'edit' cliente.id %}"><i class="material-icons">edit</i></button>
+                        </td>
+                      </tr>
+                     {% endfor %}
+                      </tbody>
+                  </table>
+                  <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                {% for pagina in clientes.paginator.page_range  %}
+                                  {% if clientes.number == pagina %}
+                                <li class="page-item active">
+                                    <a class="page-link" href="?page={{ pagina }}">
+                                        {{ pagina }}
+                                    </a>
+                                </li>
+                                  {% else %}
+                                 <li class="page-item">
+                                    <a class="page-link" href="?page={{ pagina }}">
+                                        {{ pagina }}
+                                    </a>
+                                </li>
+                                  {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

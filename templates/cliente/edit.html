@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Cliente</h4>
+                  <p class="card-category">Editar Cliente</p>
+                </div>
+                <div class="card-body">
+
+                  <form method="POST">
+                    {% csrf_token %}
+                      {{form|crispy}}
+
+                      <hr>
+                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                    <a href="{% url 'cliente' %}"> <button type="button" class="btn btn-primary pull-right" >Voltar</button></a>
+                    <div class="clearfix"></div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
