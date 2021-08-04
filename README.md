@@ -1,21 +1,19 @@
-# P01
-Projeto em Desenvolvimento de um sistema de Cadastro de Clientes e Serviços para uma Oficina.
+# Projeto Web Oficina
+Sistema web para gerenciamento de uma oficina
+- em andamento
 
-#Desenvolvido em:
+## Como rodar o projeto?
+- Clone esse repositório.
+- Crie um virtualenv com Python 3.
+- Ative o virtualenv.
+- Instale as dependências(requeriments.txt).
+- Rode as migrações.
 
-Python 3.5 - 
-Django 2.2.7
-
-#Apps de Terceiros:
-
--> crispy_forms: https://django-crispy-forms.readthedocs.io/en/latest/install.html
-
--> easy_mask: https://github.com/dhelbegor/easy-mask
-
-#Dashboard Template:
-
-->Dashboard: https://www.creative-tim.com/product/material-dashboard
-
-
-
-
+## Tecnologias
+<div style="display: inline_block">
+  <img align="center" alt="Python" height="40" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
+  <img align="center" alt="Django" height="50" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-original.svg">  
+  <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">  
+  <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+</div>
